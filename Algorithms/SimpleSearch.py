@@ -5,10 +5,11 @@ def SimpleSearch(L, x):
 			return i
 	return None
 
+# ------------------------------------------------------------------------------
 
 # A variation using "enumerate"
 def SimpleSearch_v2(L, x):
-	for i, guess in enumerate(L):
+	for i, guess in enumerate(L):		# guess is L[i]
 		if guess == x:
 			return i
 	return None

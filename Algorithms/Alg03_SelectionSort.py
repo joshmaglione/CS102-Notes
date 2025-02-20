@@ -9,3 +9,12 @@ def SelectionSort(L:list) -> list:
 		L.remove(current_min)			# remove the current actual min from L
 	return L_sorted
 
+
+def SelectionSort(L:list) -> list:
+	L_sorted = []						# list we return
+	while len(L) > 0:					# main loop
+		current_min = L.min()			# if so, reassign current min
+		L_sorted.append(current_min)	# insert current actual min at end
+		L.remove(current_min)			# remove the current actual min from L
+	return L_sorted
+

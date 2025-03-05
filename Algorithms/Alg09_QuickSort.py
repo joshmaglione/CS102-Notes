@@ -1,7 +1,7 @@
 def QuickSort(L:list) -> list:
     if len(L) <= 1:
         return L
-    pivot = L[len(L) // 2]
+    pivot = L[0]
     left = []
     middle = []
     right = []

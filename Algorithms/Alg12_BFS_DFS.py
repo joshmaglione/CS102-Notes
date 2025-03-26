@@ -40,6 +40,23 @@ class Graph:
 					seen[v_neighbor] = True
 					queue.append(v_neighbor)	# Add at end
 		return vertices
+	
+	def DFS(self, start:int=0) -> list[int]:
+		"""
+		Return the list of vertices traversed via a depth-first search starting at vertex 0.
+		"""
+		vertices = []							# list to return
+		stack = [start]							# the stack for searching		
+		seen = [False]*(self.n_vertices)		# prevent duplicates
+		seen[start] = True
+		while len(stack) > 0:
+			v = stack.pop()						# Pull from end
+			vertices.append(v)
+			for v_neighbor in self.adjacency_list[v]:
+				if not seen[v_neighbor]:
+					seen[v_neighbor] = True
+					stack.append(v_neighbor)	# Add at end
+		return vertices
 
 if __name__ == "__main__":
 	G = Graph([
@@ -54,5 +71,5 @@ if __name__ == "__main__":
 		[]
 	])
 	print(f"{G}\n")
-
 	print(G.BFS())
+	print(G.DFS())

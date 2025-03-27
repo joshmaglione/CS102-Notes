@@ -24,16 +24,19 @@ class Graph:
 	def in_edges(self, j:int) -> list[int]:
 		return [i for i, verts in enumerate(self.adjacency_list) if j in verts]
 
-	def BFS(self, start:int=0) -> list[int]:
+	def BFS(self, start=0) -> list[int]:
 		"""
 		Return the list of vertices traversed via a breadth-first search starting at vertex 0.
 		"""
 		vertices = []							# list to return
 		queue = [start]							# the queue for searching		
 		seen = [False]*(self.n_vertices)		# prevent duplicates
+		# seen = [False for _ in range(self.n_vertices)]
 		seen[start] = True
 		while len(queue) > 0:
 			v = queue.pop(0)					# Pull from start
+			# v = queue[0]
+			# queue = queue[1:]
 			vertices.append(v)
 			for v_neighbor in self.adjacency_list[v]:
 				if not seen[v_neighbor]:

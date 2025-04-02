@@ -1,4 +1,4 @@
-# An implementation of a graph via its adjacency list
+# A bare-bones implementation of a edge weighted graph via its adjacency list
 class WeightedGraph:
 	def __init__(self, A:list[list[tuple[int]]]) -> None:
 		self.adjacency_list = A
@@ -10,13 +10,13 @@ class WeightedGraph:
 	# An implementation of Dijkstra's algorithm
 	def shortest_path(self, start:int, finish:int) -> list[int]:
 		# Setup
-		infinity = float("infinity")
-		seen = [False]*(self.n_vertices)
-		path = []
+		infinity = float("infinity")		# A float larger than all reals
+		seen = [False]*(self.n_vertices)	# Same as BFS/DFS
+		path = []							# We return this
 
 		# Our table of weights
 		weights = [infinity]*(self.n_vertices)
-		weights[start] = 0
+		weights[start] = 0					# Since we start at start
 
 		# Initialize
 		next_verts = [(start, 0)]
@@ -45,3 +45,14 @@ if __name__ == "__main__":
 	])
 	print(f"{G}\n")
 	print(G.shortest_path(0, 3))
+
+	print()
+	H = WeightedGraph([
+		[(1, 6), (2, 2)],
+		[(3, 1), (4, 2)],
+		[(1, 3), (3, 6)],
+		[],
+		[(3, 10)]
+	])
+	print(f"{H}\n")
+	print(H.shortest_path(0, 3))
